@@ -33,9 +33,11 @@ button.addEventListener("mouseover", ()=>{
 
 nextSlide.onclick=function () {
   next("next");
+  // resetTimer();
 }
 prevSlide.onclick=function () {
   prev("prev");
+  // resetTimer();
 }
 
 function next(direction){
@@ -77,3 +79,16 @@ Array.from(slides).forEach((slide)=>{
  slides[index].classList.add("active");     
 
 }
+// function resetTimer(){
+//   // stop timer after clicked next & prev Button
+//   clearInterval(timer);
+//   // then start again timer
+//   timer = setInterval(autoPlay,5000);
+//  }
+ 
+//  function autoPlay(){
+//   next('next');
+//  }
+
+ 
+  // var timer = setInterval(autoPlay,5000);
