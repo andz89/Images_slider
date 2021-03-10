@@ -1,65 +1,79 @@
-const slides = document.querySelectorAll('.slide');
-const next = document.querySelector('#next');
-const prev = document.querySelector('#prev');
-const auto = false; // Auto scroll
-const intervalTime = 5000;
-let slideInterval;
+let slides = document.querySelector(".slider").children
+let nextSlide=document.querySelector(".right-slide");
+let prevSlide=document.querySelector(".left-slide");
+let img = document.querySelectorAll("img")
+let button = document.querySelector(".button-slider")
+let totalSlides=slides.length;
+let index=0;
 
-const nextSlide = () => {
-  // Get current class
-  const current = document.querySelector('.current');
-  // Remove current class
-  current.classList.remove('current');
-  // Check for next slide
-  if (current.nextElementSibling) {
-    // Add current to next sibling
-    current.nextElementSibling.classList.add('current');
-  } else {
-    // Add current to start
-    slides[0].classList.add('current');
+
+Array.from(img).forEach((image)=>{
+
+  image.addEventListener("mouseover", ()=>{
+    button.style.display = "block"
+  })
+
+})
+
+
+Array.from(img).forEach((image)=>{
+
+  image.addEventListener("mouseleave", ()=>{
+    button.style.display = "none"
+  })
+
+})
+
+button.addEventListener("mouseover", ()=>{
+  button.style.display = "block"
+})
+
+
+
+
+nextSlide.onclick=function () {
+  next("next");
+}
+prevSlide.onclick=function () {
+  prev("prev");
+}
+
+function next(direction){
+
+  if(direction=="next"){
+     index++;
+      if(index==totalSlides){
+       //return to first slide
+         index=0;
+      }
+  } 
+
+
+//remove active class in each slide
+Array.from(slides).forEach((slide)=>{
+    slide.classList.remove('active')
+})
+
+ slides[index].classList.add("active");     
+
+}
+
+function prev(direction){
+
+  if(direction=="prev"){
+       
+       if(index == 0){
+            index=totalSlides-1;
+       }else{
+            index--;
+       }
   }
-  // setTimeout(() => current.classList.remove('current'),2000);
-  // setTimeout(()=>{
 
-  //   current.classList.remove('current')
-  // },2000)
-};
+//remove active class in each slide
+Array.from(slides).forEach((slide)=>{
+    slide.classList.remove('active')
+})
 
-const prevSlide = () => {
-  // Get current class
-  const current = document.querySelector('.current');
-  // Remove current class
-  current.classList.remove('current');
-  // Check for prev slide
-  if (current.previousElementSibling) {
-    // Add current to prev sibling
-    current.previousElementSibling.classList.add('current');
-  } else {
-    // Add current to last
-    slides[slides.length - 1].classList.add('current');
-  }
-  // setTimeout(() => current.classList.remove('current'),2000);
-};
+ slides[index].classList.add("active");     
 
-// Button events
-next.addEventListener('click', e => {
-  nextSlide();
-  if (auto) {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, intervalTime);
-  }
-});
-
-prev.addEventListener('click', e => {
-  prevSlide();
-  if (auto) {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, intervalTime);
-  }
-});
-
-// Auto slide
-if (auto) {
-  // Run next slide at interval time
-  slideInterval = setInterval(nextSlide, intervalTime);
 }

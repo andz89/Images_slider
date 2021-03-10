@@ -1,0 +1,40 @@
+.button-slider{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    max-width: 900px;
+    z-index: 1;
+    margin: auto;
+    line-height: 40px;
+    position: relative;
+    top: 200px;
+    cursor: pointer;
+    display: none;
+    animation-name: modalOpen;
+    animation-duration: 0.3000s; 
+    }
+    
+   .left-slide{
+       position: absolute;
+      left: 30px;
+      color: #fff;
+      font-size: 20px;
+      background-color: #333;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      align-items: center;
+  }
+  .right-slide{
+      position: absolute;
+      right: 30px;
+      color: #fff;
+      font-size: 20px;
+      background-color: #333;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      align-items: center;
+  }

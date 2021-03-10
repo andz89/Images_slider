@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+body{
+    background-color:#f4f4f4;
+}
+.slider{
+    max-width: 900px;
+    position: relative;
+}
+img{
+    width: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    animation-name: modalOpen;
+    animation-duration: 0.9000s; 
+}
+
+
+.slider-item {
+    display: none;
+}
+.slider-item.active {
+    display: block;
+}
+@keyframes modalOpen{
+
+    0%{opacity: 0}
+    100%{opacity: 1;}
+}
+
+ 
